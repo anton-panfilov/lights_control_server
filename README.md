@@ -8,3 +8,52 @@ The remote RGB lights control server
 
 ## only 1 worker!
 please use only one worker because the application stores the environment in global variables
+
+
+**Description:** This server allows multiple clients to connect and synchronize RGB light settings.
+
+### API Endpoints
+
+#### Get Color
+
+- **Endpoint:** `/get-color`
+- **Method:** `GET`
+- **Summary:** Retrieve the current RGB color setting.
+- **Operation ID:** `get_color_get_color_get`
+- **Responses:**
+  - **200 (Successful Response):**
+    - **Content-Type:** `application/json`
+    - **Schema:** [RGB](#rgb)
+
+#### Set Color
+
+- **Endpoint:** `/set-color`
+- **Method:** `POST`
+- **Summary:** Set a new RGB color.
+- **Operation ID:** `set_color_set_color_post`
+- **Request Body:**
+  - **Content-Type:** `application/json`
+  - **Schema:** [RGB](#rgb)
+  - **Required:** `true`
+- **Responses:**
+  - **200 (Successful Response):**
+    - **Content-Type:** `application/json`
+    - **Schema:** [SetColorResponse](#setcolorresponse)
+  - **423 (Locked):**
+    - **Content-Type:** `application/json`
+    - **Schema:** [SetColorResponse](#setcolorresponse)
+  - **422 (Validation Error):**
+    - **Content-Type:** `application/json`
+    - **Schema:** [HTTPValidationError](#httpvalidationerror)
+- **Security:** Requires JWT Bearer token.
+
+#### Synchronize Color Receiving
+
+- **Endpoint:** `/synchronize-color-receiving`
+- **Method:** `GET`
+- **Summary:** Synchronize the receipt of color changes.
+- **Operation ID:** `synchronize_color_receiving_synchronize_color_receiving_get`
+- **Responses:**
+  - **200 (Successful Response):**
+    - **Content-Type:** `application/json`
+    - **Schema:** [SynchronizeColorReceivingResponse](#synchronizecolorreceivingresponse)

@@ -21,7 +21,41 @@ async def get_color() -> RGB:
     return statement.get_color()
 
 
-@router.post("/set-color", dependencies=[Depends(JWTBearer())])
+@router.post(
+    path="/set-color",
+    dependencies=[Depends(JWTBearer())],
+    response_model=SetColorResponse,
+    responses={
+        200: {
+            "description": "Successful Response",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/SetColorResponse"
+                    },
+                    "example": {
+                        "success": True,
+                        "next_change_available_in": 9.999821
+                    }
+                }
+            }
+        },
+        423: {
+            "description": "Resource is locked. Another change cannot be made at this time.",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/SetColorResponse"
+                    },
+                    "example": {
+                        "success": False,
+                        "next_change_available_in": 1.232121
+                    }
+                }
+            }
+        }
+    }
+)
 async def set_color(color: RGB, response: Response) -> SetColorResponse:
     success = statement.set_color(color)
     if not success:
