@@ -46,4 +46,4 @@ please use only one worker because the application stores the environment in glo
 - **Summary:** Synchronize the receipt of color changes.
 - **Operation ID:** `synchronize_color_receiving_synchronize_color_receiving_get`
 - **Responses:**
-  - **200 (Successful Response):*
+  - **200 (Successful Response)**
