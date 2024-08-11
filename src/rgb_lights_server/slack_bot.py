@@ -10,19 +10,18 @@ signature_verifier: SignatureVerifier = SignatureVerifier(env.SLACK_SIGNING_SECR
 
 # Mapping of emoji to RGB values
 EMOJI_TO_COLOR = {
-    "green_heart": RGB(R=0, G=255, B=0),
-    "blue_heart": RGB(R=0, G=0, B=255),
-    "heart": RGB(R=255, G=0, B=0),
-    "hearts": RGB(R=255, G=0, B=0),
-    "red_heart": RGB(R=255, G=0, B=0),
-    "yellow_heart": RGB(R=255, G=255, B=0),
-    "purple_heart": RGB(R=128, G=0, B=128),
-    "black_heart": RGB(R=0, G=0, B=0),
-    "white_heart": RGB(R=255, G=255, B=255),
-    "orange_heart": RGB(R=255, G=165, B=0),
-    "brown_heart": RGB(R=165, G=42, B=42),
+    ":green_heart:": RGB(R=0, G=255, B=0),
+    ":blue_heart:": RGB(R=0, G=0, B=255),
+    ":heart:": RGB(R=255, G=0, B=0),
+    ":hearts:": RGB(R=255, G=0, B=0),
+    ":red_heart:": RGB(R=255, G=0, B=0),
+    ":yellow_heart:": RGB(R=255, G=255, B=0),
+    ":purple_heart:": RGB(R=128, G=0, B=128),
+    ":black_heart:": RGB(R=0, G=0, B=0),
+    ":white_heart:": RGB(R=255, G=255, B=255),
+    ":orange_heart:": RGB(R=255, G=165, B=0),
+    ":brown_heart:": RGB(R=165, G=42, B=42),
 }
-
 
 class SlackEventExample(BaseModel):
     event: Dict[str, Any] = Field(
