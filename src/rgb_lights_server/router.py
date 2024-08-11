@@ -78,8 +78,16 @@ async def synchronize_color_receiving() -> SynchronizeColorReceivingResponse:
         seconds_until_next_sync=statement.seconds_until_next_sync()
     )
 
-
 @router.post("/slack/events")
+async def slack_events_validation():
+    return {
+        "token": "Jhj5dZrVaK7ZwHHjRyZWjbDl",
+        "challenge": "3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P",
+        "type": "url_verification"
+    }
+
+
+@router.post("/slack/events2")
 async def slack_events(request: Request, response: Response, payload: SlackEventExample) -> SetColorResponse:
     # Verify Slack request signature
     headers = {key: value for key, value in request.headers.items()}
