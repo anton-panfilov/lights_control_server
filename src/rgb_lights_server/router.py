@@ -79,26 +79,17 @@ async def synchronize_color_receiving() -> SynchronizeColorReceivingResponse:
     )
 
 
-class Temp(BaseModel):
-    token: str
-    challenge: str
-    type: str
 @router.post("/slack/events")
-async def slack_events_validation(request: Temp):
-    return {"challenge": request.challenge}
-
-
-@router.post("/slack/events2")
 async def slack_events(request: Request, response: Response, payload: SlackEventExample) -> SetColorResponse:
-    # Verify Slack request signature
-    headers = {key: value for key, value in request.headers.items()}
-    if not signature_verifier.is_valid_request(await request.body(), headers):
-        raise HTTPException(status_code=400, detail="Invalid request signature")
-
-    # Check request timestamp to prevent replay attacks
-    timestamp = request.headers.get("X-Slack-Request-Timestamp")
-    if abs(time.time() - int(timestamp)) > 60 * 5:  # 5 minutes tolerance
-        raise HTTPException(status_code=400, detail="Request too old")
+    # # Verify Slack request signature
+    # headers = {key: value for key, value in request.headers.items()}
+    # if not signature_verifier.is_valid_request(await request.body(), headers):
+    #     raise HTTPException(status_code=400, detail="Invalid request signature")
+    #
+    # # Check request timestamp to prevent replay attacks
+    # timestamp = request.headers.get("X-Slack-Request-Timestamp")
+    # if abs(time.time() - int(timestamp)) > 60 * 5:  # 5 minutes tolerance
+    #     raise HTTPException(status_code=400, detail="Request too old")
 
     # parse json
     try:
