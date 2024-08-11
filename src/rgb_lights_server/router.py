@@ -100,7 +100,7 @@ async def slack_events(request: Request, response: Response, payload: SlackEvent
     # Check for the message event and correct channel
     if (
             'event' in data
-            and data['event']['type'] == 'message'
+            #and data['event']['type'] == 'message'
             and data['event'].get('channel') == env.SLACK_TARGET_CHANNEL_ID
     ):
         text = data['event'].get('text', '')
