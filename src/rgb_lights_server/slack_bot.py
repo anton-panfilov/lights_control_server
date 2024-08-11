@@ -12,6 +12,8 @@ signature_verifier: SignatureVerifier = SignatureVerifier(env.SLACK_SIGNING_SECR
 EMOJI_TO_COLOR = {
     "green_heart": RGB(R=0, G=255, B=0),
     "blue_heart": RGB(R=0, G=0, B=255),
+    "heart": RGB(R=255, G=0, B=0),
+    "hearts": RGB(R=255, G=0, B=0),
     "red_heart": RGB(R=255, G=0, B=0),
     "yellow_heart": RGB(R=255, G=255, B=0),
     "purple_heart": RGB(R=128, G=0, B=128),
