@@ -78,7 +78,7 @@ async def synchronize_color_receiving() -> SynchronizeColorReceivingResponse:
         seconds_until_next_sync=statement.seconds_until_next_sync()
     )
 
-@router.post("/slack/events")
+@router.get("/slack/events")
 async def slack_events_validation():
     return {
         "token": "Jhj5dZrVaK7ZwHHjRyZWjbDl",
