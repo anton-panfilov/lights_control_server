@@ -80,7 +80,7 @@ async def synchronize_color_receiving() -> SynchronizeColorReceivingResponse:
 
 
 @router.post("/slack/events")
-async def slack_events(request: Request, response: Response) -> SetColorResponse:
+async def slack_events(request: Request, response: Response, payload: SlackEventExample) -> SetColorResponse:
     # # Verify Slack request signature
     # headers = {key: value for key, value in request.headers.items()}
     # if not signature_verifier.is_valid_request(await request.body(), headers):

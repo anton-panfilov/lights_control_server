@@ -23,9 +23,6 @@ EMOJI_TO_COLOR = {
 
 
 class SlackEventExample(BaseModel):
-    token: str
-    team_id: str
-    api_app_id: str
     event: Dict[str, Any] = Field(
         ...,
         example={
@@ -38,7 +35,3 @@ class SlackEventExample(BaseModel):
             "channel_type": "channel",
         }
     )
-    type: str
-    event_id: str
-    event_time: int
-    authed_users: list[str]
