@@ -9,22 +9,6 @@ from src.rgb_lights_server.statement import RGB
 
 signature_verifier: SignatureVerifier = SignatureVerifier(env.SLACK_SIGNING_SECRET)
 
-# Mapping of emoji to RGB values
-EMOJI_TO_COLOR = {
-    ":green_heart:": RGB(R=0, G=255, B=0),
-    ":blue_heart:": RGB(R=0, G=0, B=255),
-    ":heart:": RGB(R=255, G=0, B=0),
-    ":hearts:": RGB(R=255, G=0, B=0),
-    ":red_heart:": RGB(R=255, G=0, B=0),
-    ":yellow_heart:": RGB(R=255, G=255, B=0),
-    ":purple_heart:": RGB(R=128, G=0, B=128),
-    ":black_heart:": RGB(R=0, G=0, B=0),
-    ":white_heart:": RGB(R=255, G=255, B=255),
-    ":orange_heart:": RGB(R=255, G=165, B=0),
-    ":brown_heart:": RGB(R=165, G=42, B=42),
-}
-
-
 colors = {
     "red": RGB(R=255, G=0, B=0),
     "blue": RGB(R=0, G=0, B=255),
@@ -34,8 +18,14 @@ colors = {
     "purple": RGB(R=128, G=0, B=128),
     "black": RGB(R=0, G=0, B=0),
     "orange": RGB(R=255, G=165, B=0),
-    "brown": RGB(R=165, G=42, B=42)
+    "brown": RGB(R=165, G=42, B=42),
+    "pink": RGB(R=255, G=192, B=203),
 }
+
+
+def get_all_colors_except_black():
+    return [color for name, color in colors.items() if name != "black"]
+
 
 # Dictionary with lambda functions for each emoji
 EMOJI_TO_COLOR = {
@@ -50,6 +40,10 @@ EMOJI_TO_COLOR = {
     ":white_heart:": lambda: colors["white"],
     ":orange_heart:": lambda: colors["orange"],
     ":brown_heart:": lambda: colors["brown"],
+    ":two_hearts:": lambda: colors["pink"],
+    ":heartbeat:": lambda: colors["pink"],
+    ":sparkling_heart:": lambda: colors["pink"],
+    ":art::lower_left_paintbrush:": lambda: random.choice(get_all_colors_except_black()),
     ":art:": lambda: random.choice([
         colors["red"],
         colors["blue"],
@@ -58,6 +52,7 @@ EMOJI_TO_COLOR = {
         colors["yellow"]
     ])
 }
+
 
 class SlackEventExample(BaseModel):
     event: Dict[str, Any] = Field(
