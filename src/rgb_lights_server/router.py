@@ -106,9 +106,9 @@ async def slack_events(request: Request, response: Response, payload: SlackEvent
         text = data['event'].get('text', '')
 
         # Check if the message contains one of the target emojis
-        for emoji, color in EMOJI_TO_COLOR.items():
+        for emoji, color_lambda in EMOJI_TO_COLOR.items():
             if emoji in text:
-                success = statement.set_color(color)
+                success = statement.set_color(color_lambda())
                 if not success:
                     response.status_code = 423
 

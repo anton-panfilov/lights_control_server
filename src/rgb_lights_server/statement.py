@@ -61,5 +61,5 @@ class Statement:
 
 statement = Statement(
     working_seconds=300,
-    protected_seconds=10
+    protected_seconds=1
 )
