@@ -53,6 +53,7 @@ EMOJI_TO_COLOR = {
     ]),
     ":tumbler_glass:": lambda: colors["blue"],
     ":smoking:": lambda: colors["green"],
+    ":dancer:": lambda: colors["red"],
 }
 
 
